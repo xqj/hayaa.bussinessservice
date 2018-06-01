@@ -1,0 +1,13 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="hayaa.cms.service.core"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="mapper/CustomMapper.xml"/>
+        <mapper resource="mapper/CustomPersonMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
+        <mapper resource="mapper/SkuMapper.xml"/>
+        <mapper resource="mapper/SpuMapper.xml"/>
+    </mappers>
+</configuration>

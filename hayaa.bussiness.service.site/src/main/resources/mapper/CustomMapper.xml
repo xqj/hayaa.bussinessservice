@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hayaa.bussiness.service.core.CustomMapper">
+    <select id="getList" resultType="hayaa.bussiness.service.model.Custom">select * from Custom
+        <where>
+            <if test="searchPamater.customId != null">customId = #{searchPamater.customId}</if>
+            <if test="searchPamater.customIdMax != null and searchPamater.customIdMin != null">customId BETWEEN
+                #{searchPamater.customIdMin} to #{searchPamater.customIdMax}
+            </if>
+            <if test="searchPamater.customPersonId != null">AND customPersonId = #{searchPamater.customPersonId}</if>
+            <if test="searchPamater.customPersonIdMax != null and searchPamater.customPersonIdMin != null">AND
+                customPersonId BETWEEN #{searchPamater.customPersonIdMin} to #{searchPamater.customPersonIdMax}
+            </if>
+            <if test="searchPamater.nickName != null">AND nickName like "%"#{searchPamater.nickName}"%"</if>
+            <if test="searchPamater.photo != null">AND photo like "%"#{searchPamater.photo}"%"</if>
+            <if test="searchPamater.group != null">AND group = #{searchPamater.group}</if>
+            <if test="searchPamater.groupMax != null and searchPamater.groupMin != null">AND group BETWEEN
+                #{searchPamater.groupMin} to #{searchPamater.groupMax}
+            </if>
+        </where>
+    </select>
+</mapper>

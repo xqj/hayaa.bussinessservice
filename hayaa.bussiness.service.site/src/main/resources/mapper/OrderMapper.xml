@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hayaa.bussiness.service.core.OrderMapper">
+    <select id="getList" resultType="hayaa.bussiness.service.model.Order">select * from Order
+        <where>
+            <if test="searchPamater.orderId != null">orderId = #{searchPamater.orderId}</if>
+            <if test="searchPamater.orderIdMax != null and searchPamater.orderIdMin != null">orderId BETWEEN
+                #{searchPamater.orderIdMin} to #{searchPamater.orderIdMax}
+            </if>
+            <if test="searchPamater.orderCode != null">AND orderCode like "%"#{searchPamater.orderCode}"%"</if>
+            <if test="searchPamater.spuId != null">AND spuId = #{searchPamater.spuId}</if>
+            <if test="searchPamater.spuIdMax != null and searchPamater.spuIdMin != null">AND spuId BETWEEN
+                #{searchPamater.spuIdMin} to #{searchPamater.spuIdMax}
+            </if>
+            <if test="searchPamater.skuId != null">AND skuId = #{searchPamater.skuId}</if>
+            <if test="searchPamater.skuIdMax != null and searchPamater.skuIdMin != null">AND skuId BETWEEN
+                #{searchPamater.skuIdMin} to #{searchPamater.skuIdMax}
+            </if>
+            <if test="searchPamater.price != null">AND price = #{searchPamater.price}</if>
+            <if test="searchPamater.priceMax != null and searchPamater.priceMin != null">AND price BETWEEN
+                #{searchPamater.priceMin} to #{searchPamater.priceMax}
+            </if>
+            <if test="searchPamater.status != null">AND status = #{searchPamater.status}</if>
+            <if test="searchPamater.statusMax != null and searchPamater.statusMin != null">AND status BETWEEN
+                #{searchPamater.statusMin} to #{searchPamater.statusMax}
+            </if>
+        </where>
+    </select>
+</mapper>

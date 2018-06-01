@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hayaa.bussiness.service.core.CustomPersonMapper">
+    <select id="getList" resultType="hayaa.bussiness.service.model.CustomPerson">select * from CustomPerson
+        <where>
+            <if test="searchPamater.customPersonId != null">customPersonId = #{searchPamater.customPersonId}</if>
+            <if test="searchPamater.customPersonIdMax != null and searchPamater.customPersonIdMin != null">
+                customPersonId BETWEEN #{searchPamater.customPersonIdMin} to #{searchPamater.customPersonIdMax}
+            </if>
+            <if test="searchPamater.name != null">AND name like "%"#{searchPamater.name}"%"</if>
+            <if test="searchPamater.sex != null">AND sex = #{searchPamater.sex}</if>
+            <if test="searchPamater.sexMax != null and searchPamater.sexMin != null">AND sex BETWEEN
+                #{searchPamater.sexMin} to #{searchPamater.sexMax}
+            </if>
+            <if test="searchPamater.birthday != null">AND birthday = #{searchPamater.birthday}</if>
+            <if test="searchPamater.birthdayMax != null and searchPamater.birthdayMin != null">AND birthday BETWEEN
+                #{searchPamater.birthdayMin} to #{searchPamater.birthdayMax}
+            </if>
+            <if test="searchPamater.carID != null">AND carID like "%"#{searchPamater.carID}"%"</if>
+
+        </where>
+    </select>
+</mapper>
